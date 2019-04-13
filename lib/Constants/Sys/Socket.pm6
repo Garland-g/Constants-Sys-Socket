@@ -12,6 +12,8 @@ Constants::Sys::Socket - Socket constants defined in sys/socket.h
 
 use Constants::Sys::Socket :SO, :AF;
 
+say SOCK::DGRAM;
+
 say AF::INET6;
 
 say SO::REUSEADDR;
@@ -202,6 +204,127 @@ constant SO is export(:SO) := $*KERNEL.name eq 'linux' ?? do {
     NOSIGPIPE => 1022,
   );
   SO;
+}
+)))));
+
+constant SOCK is export(:SOCK) := $*KERNEL.name eq 'linux' ?? do {
+  my enum SOCK (
+    STREAM => 1,
+    DGRAM => 2,
+    RAW => 3,
+    RDM => 4,
+    SEQPACKET => 5,
+    DCCP => 6,
+    PACKET => 10,
+  );
+  SOCK;
+}
+!! ($*KERNEL.name eq any('netbsd') ?? do { #windows, #netbsd
+  my enum SOCK (
+    STREAM => 1,
+    DGRAM => 2,
+    RAW => 3,
+    RDM => 4,
+    SEQPACKET => 5,
+    CONN_DGRAM => 6,
+    DCCP => 6,
+    PACKET => 10,
+  );
+  SOCK;
+}
+!! ($*KERNEL.name eq any('dragonflybsd') ?? do {
+  my enum SOCK (
+    STREAM => 1,
+    DGRAM => 2,
+    RAW => 3,
+    RDM => 4,
+    SEQPACKET => 5,
+  );
+  SOCK;
+}
+!! ($*DISTRO.is-win() ?? do {
+  my enum SOCK (
+    STREAM => 1,
+    DGRAM => 2,
+    RAW => 3,
+    RDM => 4,
+    SEQPACKET => 5,
+  );
+  SOCK;
+}
+!! ($*KERNEL.name eq 'freebsd' ?? do {
+  my enum SOCK (
+    STREAM => 1,
+    DGRAM => 2,
+    RAW => 3,
+    RDM => 4,
+    SEQPACKET => 5,
+  );
+  SOCK;
+}
+!! ($*KERNEL.name eq 'openbsd' ?? do {
+  my enum SOCK (
+    STREAM => 1,
+    DGRAM => 2,
+    RAW => 3,
+    RDM => 4,
+    SEQPACKET => 5,
+  );
+  SOCK;
+}
+!! do { #macosx
+  my enum SOCK (
+    STREAM => 1,
+    DGRAM => 2,
+    RAW => 3,
+    RDM => 4,
+    SEQPACKET => 5,
+  );
+  SOCK;
+}
+)))));
+
+constant SOL is export(:SOL) := $*KERNEL.name eq 'linux' ?? do {
+  my enum SOL (
+    SOCKET => 1,
+  );
+  SOL;
+}
+!! ($*KERNEL.name eq any('netbsd') ?? do { #windows, #netbsd
+  my enum SOL (
+    SOCKET => 0xFFFF,
+  );
+  SOL;
+}
+!! ($*KERNEL.name eq any('dragonflybsd') ?? do {
+  my enum SOL (
+    SOCKET => 0xFFFF,
+  );
+  SOL;
+}
+!! ($*DISTRO.is-win() ?? do {
+  my enum SOL (
+    SOCKET => 0xFFFF,
+  );
+  SOL;
+}
+!! ($*KERNEL.name eq 'freebsd' ?? do {
+  my enum SOL (
+    SOCKET => 0xFFFF,
+  );
+  SOL;
+}
+!! ($*KERNEL.name eq 'openbsd' ?? do {
+  my enum SOL (
+    SOCKET => 0xFFFF,
+  );
+  SOL;
+}
+!! do { #macosx
+  my enum SOL (
+    SOCKET => 0xFFFF,
+  );
+  SOL;
 }
 )))));
 
