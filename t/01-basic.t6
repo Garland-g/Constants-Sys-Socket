@@ -1,0 +1,11 @@
+use v6.c;
+use Test;
+use Constants::Sys::Socket :ALL;
+
+plan 2;
+
+is AF::INET.value, 2, <Can extract value from AF>;
+
+is SO::DEBUG.value, 1, <Can extract value from SO>;
+
+done-testing;
