@@ -10,13 +10,19 @@ Constants::Sys::Socket - Socket constants defined in sys/socket.h
 
 =begin code :lang<perl6>
 
-use Constants::Sys::Socket :SO, :AF;
+use Constants::Sys::Socket :SOCK, :AF, :SO;
 
 say SOCK::DGRAM;
 
 say AF::INET6;
 
 say SO::REUSEADDR;
+
+say SOCK.enums.keys;
+
+say AF.enums.keys;
+
+say SO.enums.keys;
 
 =end code
 
