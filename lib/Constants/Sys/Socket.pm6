@@ -70,7 +70,9 @@ constant SO is export(:SO) := $*KERNEL.name eq 'linux' ?? do {
     SNDLOWAT => 19,
     RCVTIMEO => 20,
     SNDTIMEO => 21,
+    BINDTODEVICE => 25,
     ACCEPTCONN => 30,
+    PROTOCOL => 38,
   );
   SO;
 }
@@ -139,6 +141,11 @@ constant SO is export(:SO) := $*KERNEL.name eq 'linux' ?? do {
     ERROR => 0x1007,
     TYPE => 0x1008,
     BSP_STATE => 0x1009,
+    GROUP_ID => 0x2001,
+    GROUP_PRIORITY => 0x2002,
+    MAX_MSG_SIZE => 0x2003,
+    PROTOCOL_INFOA => 0x2004,
+    PROTOCOL_INFOW => 0x2005,
   );
   SO;
 }
@@ -165,6 +172,18 @@ constant SO is export(:SO) := $*KERNEL.name eq 'linux' ?? do {
     RCVTIME0 => 0x1006,
     ERROR => 0x1007,
     TYPE => 0x1008,
+    LABEL => 0x1009,
+    PEERLABEL => 0x1010,
+    LISTENQLIMIT => 0x1011,
+    LISTENQLEN => 0x1012,
+    LISTENINCQLEN => 0x1013,
+    SETFIB => 0x1014,
+    USER_COOKIE => 0x1015,
+    PROTOCOL => 0x1016,
+    PROTOTYPE => 0x1016,
+    TS_CLOCK => 0x1017,
+    MAX_PACING_RATE => 0x1018,
+    DOMAIN => 0x1019,
   );
   SO;
 }
@@ -189,6 +208,12 @@ constant SO is export(:SO) := $*KERNEL.name eq 'linux' ?? do {
     RCVTIME0 => 0x1006,
     ERROR => 0x1007,
     TYPE => 0x1008,
+    NETPROC => 0x1020,
+    RTABLE => 0x1021,
+    PEERCRED => 0x1022,
+    SPLICE => 0x1023,
+    DOMAIN => 0x1024,
+    PROTOCOL => 0x1025,
   );
   SO;
 }
@@ -214,7 +239,21 @@ constant SO is export(:SO) := $*KERNEL.name eq 'linux' ?? do {
     RCVTIME0 => 0x1006,
     ERROR => 0x1007,
     TYPE => 0x1008,
-    NOSIGPIPE => 1022,
+    NOSIGPIPE => 0x1022,
+    NOADDRERR => 0x1023,
+    NWRITE => 0x1024,
+    REUSESHAREUID => 0x1025,
+    NOTIFYCONFLICT => 0x1026,
+    UPCALLCLOSEWAIT => 0x1027,
+    LINGER_SEC => 0x1080,
+    RESTRICTIONS => 0x1081,
+    RESTRICT_DENY_IN => 0x1,
+    RESTRICT_DENY_OUT => 0x2,
+    RESTRICT_DENY_CELLULAR => 0x4,
+    RESTRICT_DENY_EXPENSIVE => 0x8,
+    RANDOMPORT => 0x1082,
+    NP_EXTENSIONS => 0x1083,
+    EXECPATH => 0x1085,
   );
   SO;
 }
