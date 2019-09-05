@@ -2,7 +2,7 @@ use v6.c;
 use Test;
 use Constants::Sys::Socket :ALL;
 
-plan 4;
+plan 5;
 
 is AF::INET.value, 2, <Can extract value from AF>;
 
@@ -11,5 +11,7 @@ is SO::DEBUG.value, 1, <Can extract value from SO>;
 is SOL::SOCKET.value, any(1, 0xFFFF), <Can extract value from SOL>;
 
 is SOCK::STREAM.value, 1, <Can extract value from SOCK>;
+
+is MSG::OOB.value, 1, <Can extract value from MSG>;
 
 done-testing;

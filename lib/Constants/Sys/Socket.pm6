@@ -743,3 +743,143 @@ constant AF is export(:AF) := $*KERNEL.name eq 'linux' ?? do {
   AF;
 }
 )))));
+
+constant MSG is export(:MSG) := $*KERNEL.name eq 'linux' ?? do {
+  my enum MSG (
+    OOB => 0x01,
+    PEEK => 0x02,
+    DONTROUTE => 0x04,
+    TRYHARD => 0x04,
+    CTRUNC => 0x08,
+    PROXY => 0x10,
+    TRUNC => 0x20,
+    DONTWAIT => 0x40,
+    EOR => 0x80,
+    WAITALL => 0x100,
+    FIN => 0x200,
+    SYN => 0x400,
+    CONFIRM => 0x800,
+    RST => 0x1_000,
+    ERRQUEUE => 0x2_000,
+    NOSIGNAL => 0x4_000,
+    MORE => 0x8_000,
+    WAITFORONE => 0x10_000,
+    BATCH => 0x20_000,
+    ZEROCOPY => 0x4_000_000,
+    FASTOPEN => 0x20_000_000,
+    CMSG_CLOEXEC => 0x40_000_000,
+  );
+  MSG;
+}
+!! ($*KERNEL.name eq any('netbsd') ?? do {
+  my enum MSG (
+    OOB => 0x01,
+    PEEK => 0x02,
+    DONTROUTE => 0x04,
+    EOR => 0x08,
+    TRUNC => 0x10,
+    CTRUNC => 0x20,
+    WAITALL => 0x40,
+    DONTWAIT => 0x80,
+    BCAST => 0x100,
+    MCAST => 0x200,
+    NOSIGNAL => 0x400,
+    CMSG_CLOEXEC => 0x800,
+    NBIO => 0x1_000,
+    WAITFORONE => 0x2_000,
+    NOTIFICATION => 0x4_000,
+  );
+  MSG;
+}
+!! ($*KERNEL.name eq any('dragonflybsd') ?? do {
+  my enum MSG (
+    OOB => 0x01,
+    PEEK => 0x02,
+    DONTROUTE => 0x04,
+    EOR => 0x08,
+    TRUNC => 0x10,
+    CTRUNC => 0x20,
+    WAITALL => 0x40,
+    DONTWAIT => 0x80,
+    EOF => 0x100,
+    NOSIGNAL => 0x400,
+    SYNC => 0x800,
+    CMSG_CLOEXEC => 0x1_000,
+    FBLOCKING => 0x10_000,
+    FNONBLOCKING => 0x20_000,
+    FMASK => 0xFFFF0000,
+  );
+  MSG;
+}
+!! ($*DISTRO.is-win() ?? do {
+  my enum MSG (
+    OOB => 0x1,
+    PEEK => 0x2,
+    DONTROUTE => 0x4,
+    PARTIAL => 0x8000,
+    INTERRUPT => 0x10,
+    MAXIOVLEN => 16,
+  );
+  MSG;
+}
+!! ($*KERNEL.name eq 'freebsd' ?? do {
+  my enum MSG (
+    OOB => 0x1,
+    PEEK => 0x2,
+    DONTROUTE => 0x4,
+    EOR => 0x8,
+    TRUNC => 0x10,
+    CTRUNC => 0x20,
+    WAITALL => 0x40,
+    DONTWAIT => 0x80,
+    EOF => 0x100,
+    NOTIFICATION => 0x2_000,
+    NBIO => 0x4_000,
+    COMPAT => 0x8_000,
+    SOCALLBCK => 0x10_000,
+    NOSIGNAL => 0x20_000,
+    CMSG_CLOEXEC => 0x40_000,
+    WAITFORONE => 0x80_000,
+    MORETOCOME => 0x100_000,
+  );
+  MSG;
+}
+!! ($*KERNEL.name eq 'openbsd' ?? do {
+  my enum MSG (
+    OOB => 0x1,
+    PEEK => 0x2,
+    DONTROUTE => 0x4,
+    EOR => 0x8,
+    TRUNC => 0x10,
+    CTRUNC => 0x20,
+    WAITALL => 0x40,
+    DONTWAIT => 0x80,
+    BCAST => 0x100,
+    MCAST => 0x200,
+    NOSIGNAL => 0x400,
+    CMSG_CLOEXEC => 0x800
+  );
+  MSG;
+}
+!! do { #macosx
+  my enum MSG (
+    OOB => 0x1,
+    PEEK => 0x2,
+    DONTROUTE => 0x4,
+    EOR => 0x8,
+    TRUNC => 0x10,
+    CTRUNC => 0x20,
+    WAITALL => 0x40,
+    DONTWAIT => 0x80,
+    EOF => 0x100,
+    WAITSTREAM => 0x200,
+    FLUSH => 0x400,
+    HOLD => 0x800,
+    SEND => 0x1_000,
+    HAVEMORE => 0x2_000,
+    RCVMORE => 0x4_000,
+    NEEDSA => 0x10_000,
+  );
+  MSG;
+}
+)))));
