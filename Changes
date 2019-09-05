@@ -2,5 +2,9 @@ Revision history for Constants-Sys-Socket
 
 {{$NEXT}}
 
+0.0.2  2019-09-04T20:27:15-07:00
+    - Added more to the SO enum for Linux
+    - Added the MSG enum, used for flags in send and recv
+
 0.0.1  2019-05-27T08:08:26-07:00
     - Initial version

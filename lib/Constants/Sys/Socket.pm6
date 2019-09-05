@@ -48,7 +48,7 @@ Copyright 2019 Travis Gibson
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
 =end pod
-unit module Constants::Sys::Socket:ver<0.0.1>:auth<cpan:GARLANDG>;
+unit module Constants::Sys::Socket:ver<0.0.2>:auth<cpan:GARLANDG>;
 
 #Here be dragons
 
