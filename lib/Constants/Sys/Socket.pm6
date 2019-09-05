@@ -116,7 +116,7 @@ constant SO is export(:SO) := $*KERNEL.name eq 'linux' ?? do {
   );
   SO;
 }
-!! ($*KERNEL.name eq any('netbsd') ?? do { #windows, #netbsd
+!! ($*KERNEL.name eq any('netbsd') ?? do {
   my enum SO (
     DEBUG => 0x0001,
     ACCEPTCONN => 0x0002,
@@ -311,7 +311,7 @@ constant SOCK is export(:SOCK) := $*KERNEL.name eq 'linux' ?? do {
   );
   SOCK;
 }
-!! ($*KERNEL.name eq any('netbsd') ?? do { #windows, #netbsd
+!! ($*KERNEL.name eq any('netbsd') ?? do {
   my enum SOCK (
     STREAM => 1,
     DGRAM => 2,
@@ -382,7 +382,7 @@ constant SOL is export(:SOL) := $*KERNEL.name eq 'linux' ?? do {
   );
   SOL;
 }
-!! ($*KERNEL.name eq any('netbsd') ?? do { #windows, #netbsd
+!! ($*KERNEL.name eq any('netbsd') ?? do {
   my enum SOL (
     SOCKET => 0xFFFF,
   );
